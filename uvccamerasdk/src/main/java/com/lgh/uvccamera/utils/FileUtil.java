@@ -36,35 +36,34 @@ public class FileUtil {
     /**
      * 获取SD卡目录
      *
-     * @param foderName
-     * @param fileName
+     * @param folderName
      * @return
      */
-    public static File getSDCardDir(String foderName) {
+    public static File getSDCardDir(String folderName) {
         if (!hasExternalStorage()) {
             return null;
         }
-        return new File(getExternalStoragePath() + File.separator + foderName);
+        return new File(getExternalStoragePath() + File.separator + folderName);
     }
 
     /**
      * 获取SD卡文件
      *
-     * @param foderName
+     * @param folderName
      * @param fileName
      * @return
      */
-    public static File getSDCardFile(String foderName, String fileName) {
-        File foder = getSDCardDir(foderName);
-        if (foder == null) {
+    public static File getSDCardFile(String folderName, String fileName) {
+        File folder = getSDCardDir(folderName);
+        if (folder == null) {
             return null;
         }
-        if (!foder.exists()) {
-            if (!foder.mkdirs()) {
+        if (!folder.exists()) {
+            if (!folder.mkdirs()) {
                 return null;
             }
         }
-        return new File(foder, fileName);
+        return new File(folder, fileName);
     }
 
     /**
